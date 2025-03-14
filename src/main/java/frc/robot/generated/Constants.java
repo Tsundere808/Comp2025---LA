@@ -134,7 +134,7 @@ public static final class AprilTagConstants  {
         Units.inchesToMeters(530.49), 
         Units.inchesToMeters(130.17), 
         Units.inchesToMeters(12.13),
-        new Rotation3d(0, 0, Units.degreesToRadians(300))
+        new Rotation3d(0, 0, Units.degreesToRadians(120))
     );
 
     //April Tag 7
@@ -142,7 +142,7 @@ public static final class AprilTagConstants  {
         Units.inchesToMeters(546.87), 
         Units.inchesToMeters(158.50), 
         Units.inchesToMeters(12.13),
-        new Rotation3d(0, 0, Units.degreesToRadians(0))
+        new Rotation3d(0, 0, Units.degreesToRadians(180))
     );
 
     //April Tag 8
@@ -150,7 +150,7 @@ public static final class AprilTagConstants  {
         Units.inchesToMeters(530.49), 
         Units.inchesToMeters(186.83), 
         Units.inchesToMeters(12.13),
-        new Rotation3d(0, 0, Units.degreesToRadians(60))
+        new Rotation3d(0, 0, Units.degreesToRadians(240))
     );
     
     //April Tag 9
@@ -158,7 +158,7 @@ public static final class AprilTagConstants  {
         Units.inchesToMeters(497.77), 
         Units.inchesToMeters(186.83), 
         Units.inchesToMeters(12.13),
-        new Rotation3d(0, 0, Units.degreesToRadians(120))
+        new Rotation3d(0, 0, Units.degreesToRadians(300))
     );
 
     //April Tag 10
@@ -166,7 +166,7 @@ public static final class AprilTagConstants  {
         Units.inchesToMeters(481.39), 
         Units.inchesToMeters(158.50), 
         Units.inchesToMeters(12.13),
-        new Rotation3d(0, 0, Units.degreesToRadians(180))
+        new Rotation3d(0, 0, Units.degreesToRadians(0))
     );
 
     //April Tag 11
@@ -174,7 +174,7 @@ public static final class AprilTagConstants  {
         Units.inchesToMeters(497.77), 
         Units.inchesToMeters(130.17), 
         Units.inchesToMeters(12.13),
-        new Rotation3d(0, 0, Units.degreesToRadians(240))
+        new Rotation3d(0, 0, Units.degreesToRadians(60))
     );
 }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

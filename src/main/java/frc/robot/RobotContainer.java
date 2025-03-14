@@ -92,9 +92,6 @@ public class RobotContainer {
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
 
     public RobotContainer() {
-
-        
-
         //Named Commands
         //Drive
         NamedCommands.registerCommand("setFieldRelative", drivetrain.runOnce(() -> drivetrain.seedFieldCentric()));
@@ -110,6 +107,11 @@ public class RobotContainer {
         //Intake
         NamedCommands.registerCommand("intake", intakeCommand);
         NamedCommands.registerCommand("outtake", outtakeCommand);
+
+        //Algae
+        NamedCommands.registerCommand("dealgaeLow", new ParallelCommandGroup(algaeSubsystem.withVelocity(60), shoulderSubsystem.withPosition(47.78), pivot.withPosition(0)));
+        NamedCommands.registerCommand("dealgaeHigh", new ParallelCommandGroup (algaeSubsystem.withVelocity(60), shoulderSubsystem.withPosition(45.78), pivot.withPosition(0), elevator.withPosition(40)));
+
 
         autoChooser = AutoBuilder.buildAutoChooser("Tests");
         SmartDashboard.putData("Auto Mode", autoChooser);
@@ -172,7 +174,9 @@ public class RobotContainer {
         
 
         //L4 + L3
-        joystick.y().onTrue(new ParallelCommandGroup(pivot.withPosition(-33.9), shoulderSubsystem.setL4Position()));
+        //joystick.y().onTrue(new ParallelCommandGroup(pivot.withPosition(-33.9), shoulderSubsystem.setL4Position()));
+        joystick.y().onTrue(new ParallelCommandGroup(pivot.withPosition(-38.3), shoulderSubsystem.withPosition(92.7)));
+
         //L2
         joystick.a().onTrue(new ParallelCommandGroup(pivot.withPosition(15.4), shoulderSubsystem.withPosition(11.91)));
         //Load
@@ -199,8 +203,8 @@ public class RobotContainer {
 
         opJoystick2.pov(0).onTrue(climber.withPosition(270)); // For the match
         opJoystick2.pov(90).onTrue(climber.withPosition(0)); // For the match
-        opJoystick2.pov(180).onTrue(climber.withPosition(-120)); //Climb -100 from center
-        //opJoystick2.pov(0).whileTrue(climber.withPosition(-270)); // For the pid  
+        opJoystick2.pov(180).onTrue(climber.withPosition(-100)); //Climb -100 from center
+        //opJoystick2.pov(0).onTrue(climber.withPosition(-270)); // For the pid  
 
 ///////////////
 
