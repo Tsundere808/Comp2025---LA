@@ -25,14 +25,27 @@
                 "data": {
                   "pathName": "OPBarge Score 1"
                 }
+              },
+              {
+                "type": "sequential",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.4
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "elevatorL4"
+                      }
+                    }
+                  ]
+                }
               }
             ]
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "elevatorL4"
           }
         },
         {
@@ -48,12 +61,6 @@
           }
         },
         {
-          "type": "named",
-          "data": {
-            "name": "elevatorHome"
-          }
-        },
-        {
           "type": "parallel",
           "data": {
             "commands": [
@@ -62,9 +69,9 @@
                 "data": {
                   "commands": [
                     {
-                      "type": "wait",
+                      "type": "named",
                       "data": {
-                        "waitTime": 1.0
+                        "name": "elevatorL4"
                       }
                     },
                     {
@@ -108,13 +115,25 @@
                     {
                       "type": "wait",
                       "data": {
-                        "waitTime": 0.5
+                        "waitTime": 0.2
                       }
                     },
                     {
                       "type": "named",
                       "data": {
                         "name": "swL4"
+                      }
+                    },
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.2
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "elevatorL4"
                       }
                     }
                   ]
@@ -132,12 +151,6 @@
         {
           "type": "named",
           "data": {
-            "name": "elevatorL4"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
             "name": "outtake"
           }
         },
@@ -148,21 +161,85 @@
           }
         },
         {
-          "type": "named",
+          "type": "parallel",
           "data": {
-            "name": "elevatorHome"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "OP LOAD 3"
+                }
+              },
+              {
+                "type": "sequential",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "elevatorHome"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "swLoad"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
           }
         },
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "OP END"
+            "name": "intake"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "swLoad"
+            "name": "intake"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "OP SCORE 3"
+                }
+              },
+              {
+                "type": "sequential",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "swL4"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "elevatorL4"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "outtake"
           }
         }
       ]

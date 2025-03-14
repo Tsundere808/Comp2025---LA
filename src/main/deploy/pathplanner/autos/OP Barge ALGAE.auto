@@ -92,12 +92,6 @@
           }
         },
         {
-          "type": "named",
-          "data": {
-            "name": "intake"
-          }
-        },
-        {
           "type": "parallel",
           "data": {
             "commands": [
@@ -156,13 +150,26 @@
         {
           "type": "path",
           "data": {
-            "pathName": "OP END"
+            "pathName": "DEALAGE SETUP"
           }
         },
         {
-          "type": "named",
+          "type": "parallel",
           "data": {
-            "name": "swLoad"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "OPDELAGE"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": null
+                }
+              }
+            ]
           }
         }
       ]

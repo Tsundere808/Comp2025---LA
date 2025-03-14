@@ -1,0 +1,54 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 3.4388513513513517,
+        "y": 1.8806587837837834
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 3.7353040540540543,
+        "y": 2.374746621621621
+      },
+      "isLocked": false,
+      "linkedName": "OPDEALGAESETUP"
+    },
+    {
+      "anchor": {
+        "x": 3.6266047297297295,
+        "y": 2.2166385135135136
+      },
+      "prevControl": {
+        "x": 3.467677916514455,
+        "y": 2.0236559546092505
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "OPALGE"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 61.9908232919862
+  },
+  "reversed": false,
+  "folder": "Extra Autos",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 58.00000000000001
+  },
+  "useDefaultConstraints": true
+}

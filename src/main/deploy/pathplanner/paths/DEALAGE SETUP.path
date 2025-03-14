@@ -1,0 +1,54 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 3.9679303278688525,
+        "y": 2.820235655737705
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 3.7649493243243244,
+        "y": 2.374746621621621
+      },
+      "isLocked": false,
+      "linkedName": "OP SCORE 2"
+    },
+    {
+      "anchor": {
+        "x": 3.4388513513513517,
+        "y": 1.8806587837837834
+      },
+      "prevControl": {
+        "x": 3.7550675675675675,
+        "y": 2.3451013513513495
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "OPDEALGAESETUP"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 58.00000000000001
+  },
+  "reversed": false,
+  "folder": "Extra Autos",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 58.392497753751115
+  },
+  "useDefaultConstraints": true
+}
