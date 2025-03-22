@@ -29,9 +29,21 @@
           }
         },
         {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.1
+          }
+        },
+        {
           "type": "named",
           "data": {
             "name": "outtake"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.1
           }
         },
         {

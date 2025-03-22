@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.772,
-        "y": 4.0
+        "x": 1.0530000000000002,
+        "y": 0.8464999999999998
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.009649387410284,
-        "y": 3.922393501151534
+        "x": 1.7348412162162166,
+        "y": 1.3801148648648642
       },
       "isLocked": false,
-      "linkedName": "MID SCORE 1"
+      "linkedName": "OP LOAD"
     },
     {
       "anchor": {
-        "x": 6.4,
-        "y": 4.0
+        "x": 3.978,
+        "y": 2.80625
       },
       "prevControl": {
-        "x": 6.125717213114753,
-        "y": 4.019006147540983
+        "x": 3.394976351351352,
+        "y": 2.154054054054054
       },
       "nextControl": null,
       "isLocked": false,
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 59.99999999999999
   },
   "reversed": false,
-  "folder": "Middle Start",
+  "folder": "Opposite Barge",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -125.838
   },
   "useDefaultConstraints": true
 }

@@ -360,7 +360,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
       }
     }
     catch (Exception e) {
-      System.out.println("There is nothing coming from limelight");
+      //System.out.println("There is nothing coming from limelight");
     }
   }
     
@@ -414,6 +414,15 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                             //Driving to Tag Left//
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    // goalPose = targetPose.transformBy(
+    //   new Transform3d( 
+    //     new Translation3d(1, 0, 0), 
+    //     new Rotation3d(0, 0, Math.toRadians(180))
+    //   )
+    // ).toPose2d();
+
 
     public double run_xControllerLeft() {
 
@@ -488,7 +497,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
           xController.setGoal(goalPose.getX());
         }
         catch (Exception e) {
-          System.out.print("TargetPose and GoalPose are null");
+          //System.out.print("TargetPose and GoalPose are null");
         }
 
         //Profiled PIDs //Check this portion of code later to make sure it works
@@ -508,7 +517,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
           SmartDashboard.putNumber("xtargetPose", targetPose.getX());
           SmartDashboard.putNumber("xSpeed", xSpeed * MaxSpeed * xSpeedCheck);
         } catch (Exception e) {
-          System.out.println("GoalPose returning null");
+          //System.out.println("GoalPose returning null");
         }
        
         return xSpeed * MaxSpeed * xSpeedCheck;
@@ -588,7 +597,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
           yController.setGoal(goalPose.getY());
         }
         catch (Exception e) {
-          System.out.print("TargetPose and GoalPose are null");
+          //System.out.print("TargetPose and GoalPose are null");
         }
 
         //Profiled PIDs //Check this portion of code later to make sure it works
@@ -609,7 +618,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
           SmartDashboard.putNumber("ytargetPose", targetPose.getY());
 
         } catch (Exception e) {
-          System.out.println("GoalPose returning null");
+          //System.out.println("GoalPose returning null");
         }
         
         return ySpeed * MaxSpeed * ySpeedCheck;
@@ -683,7 +692,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
           omegaController.setGoal(goalPose.getRotation().getRadians());
         }
         catch (Exception e) {
-          System.out.print("TargetPose and GoalPose are null");
+          //System.out.print("TargetPose and GoalPose are null");
         }
     
         //Profiled PIDs //Check this portion of code later to make sure it works
@@ -702,7 +711,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
           SmartDashboard.putNumber("omegaGoalPose", goalPose.getRotation().getDegrees());
           SmartDashboard.putNumber("omegaSpeed", omegaSpeed * MaxSpeed * omegaSpeedCheck);
         } catch (Exception e) {
-          System.out.println("GoalPose returns null");
+          //System.out.println("GoalPose returns null");
         }
      
         return omegaSpeed * MaxAngularRate * omegaSpeedCheck;
@@ -790,7 +799,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         xController.setGoal(goalPose.getX());
       }
       catch (Exception e) {
-        System.out.print("TargetPose and GoalPose are null");
+        //System.out.print("TargetPose and GoalPose are null");
       }
 
       //Profiled PIDs //Check this portion of code later to make sure it works
@@ -810,7 +819,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         SmartDashboard.putNumber("xtargetPose", targetPose.getX());
         SmartDashboard.putNumber("xSpeed", xSpeed * MaxSpeed * xSpeedCheck);
       } catch (Exception e) {
-        System.out.println("GoalPose returning null");
+        //System.out.println("GoalPose returning null");
       }
      
       return xSpeed * MaxSpeed * xSpeedCheck;
@@ -891,7 +900,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         yController.setGoal(goalPose.getY());
       }
       catch (Exception e) {
-        System.out.print("TargetPose and GoalPose are null");
+        //System.out.print("TargetPose and GoalPose are null");
       }
 
       //Profiled PIDs //Check this portion of code later to make sure it works
@@ -912,7 +921,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         SmartDashboard.putNumber("ytargetPose", targetPose.getY());
 
       } catch (Exception e) {
-        System.out.println("GoalPose returning null");
+        //System.out.println("GoalPose returning null");
       }
       
       return ySpeed * MaxSpeed * ySpeedCheck;
@@ -986,7 +995,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         omegaController.setGoal(goalPose.getRotation().getRadians());
       }
       catch (Exception e) {
-        System.out.print("TargetPose and GoalPose are null");
+        //System.out.print("TargetPose and GoalPose are null");
       }
   
       //Profiled PIDs //Check this portion of code later to make sure it works
@@ -1005,7 +1014,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         SmartDashboard.putNumber("omegaGoalPose", goalPose.getRotation().getDegrees());
         SmartDashboard.putNumber("omegaSpeed", omegaSpeed * MaxSpeed * omegaSpeedCheck);
       } catch (Exception e) {
-        System.out.println("GoalPose returns null");
+        //System.out.println("GoalPose returns null");
       }
    
       return omegaSpeed * MaxAngularRate * omegaSpeedCheck;
@@ -1047,11 +1056,10 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         SmartDashboard.putNumber("Pos: Rot", poseEstimatorReef.getEstimatedPosition().getRotation().getDegrees());
         }
         catch (Exception e) {
-          System.out.println("Nothing being recieved from limelight");
+          //System.out.println("Nothing being recieved from limelight");
         }
 
         this.updateOdometryReef();
-
         SmartDashboard.putNumber("limelight reef ID", LimelightHelpers.getFiducialID("limelight-backup"));
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

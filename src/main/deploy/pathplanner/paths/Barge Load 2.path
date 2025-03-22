@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 1.3062784090909094,
-        "y": 7.091264204545454
+        "x": 1.0627499999999999,
+        "y": 7.115749999999999
       },
       "prevControl": {
-        "x": 1.7948863636363637,
-        "y": 6.592684659090909
+        "x": 1.5513579545454546,
+        "y": 6.617170454545454
       },
       "nextControl": null,
       "isLocked": false,
@@ -42,10 +42,10 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 130.31410016049733
+    "rotation": 125.78897345918342
   },
   "reversed": false,
-  "folder": null,
+  "folder": "Barge Paths",
   "idealStartingState": {
     "velocity": 0,
     "rotation": -55.00797980144128

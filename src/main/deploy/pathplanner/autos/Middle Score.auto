@@ -13,7 +13,7 @@
         {
           "type": "named",
           "data": {
-            "name": "swL4"
+            "name": "swL4LOWER"
           }
         },
         {
@@ -31,7 +31,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 0.2
+            "waitTime": 1.0
           }
         },
         {
@@ -43,7 +43,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 0.2
+            "waitTime": 0.5
           }
         },
         {

@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.9679303278688525,
-        "y": 2.820235655737705
+        "x": 3.79275,
+        "y": 2.8452499999999996
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.6442635478629777,
-        "y": 2.352714296626978
+        "x": 3.469083219994125,
+        "y": 2.3777286408892726
       },
       "isLocked": false,
       "linkedName": "OP SCORE 2"
@@ -45,7 +45,7 @@
     "rotation": 0.0
   },
   "reversed": false,
-  "folder": null,
+  "folder": "Opposite Barge",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 58.392497753751115

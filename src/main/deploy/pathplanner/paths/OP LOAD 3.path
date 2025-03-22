@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.9679303278688525,
-        "y": 2.820235655737705
+        "x": 3.79275,
+        "y": 2.8452499999999996
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.2115709459459465,
-        "y": 1.9992398648648648
+        "x": 3.036390618077094,
+        "y": 2.0242542091271596
       },
       "isLocked": false,
       "linkedName": "OP SCORE 2"
     },
     {
       "anchor": {
-        "x": 1.5104508196721311,
-        "y": 0.6264856557377039
+        "x": 1.0530000000000002,
+        "y": 0.8464999999999998
       },
       "prevControl": {
-        "x": 2.025760135135135,
-        "y": 1.169172297297297
+        "x": 1.5683093154630041,
+        "y": 1.389186641559593
       },
       "nextControl": null,
       "isLocked": false,
@@ -34,7 +34,7 @@
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
+    "maxAcceleration": 2.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -50,5 +50,5 @@
     "velocity": 0,
     "rotation": 58.392497753751115
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

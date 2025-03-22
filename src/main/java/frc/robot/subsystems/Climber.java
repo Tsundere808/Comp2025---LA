@@ -21,6 +21,7 @@ import com.ctre.phoenix6.controls.PositionTorqueCurrentFOC;
 import com.ctre.phoenix6.controls.PositionVoltage;
 import com.ctre.phoenix6.controls.VelocityTorqueCurrentFOC;
 import com.ctre.phoenix6.controls.VelocityVoltage;
+import com.ctre.phoenix6.hardware.CANrange;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
@@ -55,9 +56,12 @@ public class Climber extends SubsystemBase {
   double L2Position = 0;
   double loadPosition = 26.18;
 
+  private final CANrange canrange = new CANrange(52, "Default Name");
 
 
   public Climber() {
+
+    
 
     position = 0;
   
@@ -121,6 +125,11 @@ public boolean CheckPositionL3()
  return MathUtil.isNear(L3Position,climber.getPosition().getValueAsDouble(), 1);
 }
 
+public boolean heightCheck()
+{
+  return canrange.getIsDetected().getValue();
+}
+
 public boolean CheckPositionL2()
 {
  return MathUtil.isNear(L2Position,climber.getPosition().getValueAsDouble(), 1);
@@ -153,6 +162,10 @@ public void stop()
   climber.setControl(m_brake);
 }
 
+public Command newStop() {
+
+  return run (() -> this.setPosition(climber.getPosition().getValueAsDouble()));
+}
 
 public Command stopCommand()
 {

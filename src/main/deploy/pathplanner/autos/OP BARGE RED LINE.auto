@@ -17,13 +17,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "swL4LOWER"
+                  "name": "swL4"
                 }
               },
               {
                 "type": "path",
                 "data": {
-                  "pathName": "OPBarge Score 1"
+                  "pathName": "Straight SIde"
                 }
               }
             ]
@@ -33,12 +33,6 @@
           "type": "named",
           "data": {
             "name": "elevatorL4"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.15
           }
         },
         {
@@ -85,7 +79,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "OP Load"
+                  "pathName": "LINE Load"
                 }
               }
             ]
@@ -120,7 +114,7 @@
                     {
                       "type": "named",
                       "data": {
-                        "name": "swL4LOWER"
+                        "name": "swL4"
                       }
                     }
                   ]
@@ -129,7 +123,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "OP Barge Score 2"
+                  "pathName": "RED OP Barge Score 2"
                 }
               }
             ]
@@ -139,12 +133,6 @@
           "type": "named",
           "data": {
             "name": "elevatorL4"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.25
           }
         },
         {

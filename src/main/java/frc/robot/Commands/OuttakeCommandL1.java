@@ -8,7 +8,7 @@ import frc.robot.subsystems.LED;
 import edu.wpi.first.wpilibj.Timer;
 
 
-public class OuttakeCommand extends Command{
+public class OuttakeCommandL1 extends Command{
 
     private final CoralIntakeSubsystem intake;
     private final LED led;
@@ -16,7 +16,7 @@ public class OuttakeCommand extends Command{
     
     private boolean firstcheck = true;
 
-    public OuttakeCommand(CoralIntakeSubsystem intake, LED led) {
+    public OuttakeCommandL1(CoralIntakeSubsystem intake, LED led) {
         this.intake = intake;
         this.led = led;
         addRequirements(intake);

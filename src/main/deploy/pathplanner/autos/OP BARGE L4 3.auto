@@ -54,12 +54,6 @@
           }
         },
         {
-          "type": "named",
-          "data": {
-            "name": "elevatorHome"
-          }
-        },
-        {
           "type": "parallel",
           "data": {
             "commands": [
@@ -68,9 +62,9 @@
                 "data": {
                   "commands": [
                     {
-                      "type": "wait",
+                      "type": "named",
                       "data": {
-                        "waitTime": 1.0
+                        "name": "elevatorHome"
                       }
                     },
                     {
@@ -83,9 +77,22 @@
                 }
               },
               {
-                "type": "path",
+                "type": "sequential",
                 "data": {
-                  "pathName": "OP Load"
+                  "commands": [
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.4
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "OP Load"
+                      }
+                    }
+                  ]
                 }
               }
             ]
@@ -144,7 +151,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 0.25
+            "waitTime": 0.2
           }
         },
         {
@@ -156,25 +163,96 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 0.15
+            "waitTime": 0.1
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "sequential",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "elevatorHome"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "swLoad"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "sequential",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.4
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "OP LOAD 3"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "OP SCORE 3"
+                }
+              },
+              {
+                "type": "sequential",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.15
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "swL4LOWER"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "elevatorL4"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "elevatorHome"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "OP END"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "swLoad"
+            "name": "outtake"
           }
         }
       ]

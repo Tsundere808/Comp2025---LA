@@ -95,6 +95,17 @@ private GenericEntry intakeVoltage =
     m_intake.setControl(m_velocityVoltage.withVelocity(30));
 }
 
+public void outtakeAUTO()
+{
+    m_intake.setControl(m_velocityVoltage.withVelocity(28));
+}
+
+public void outtakeL1AUTO()
+{
+    m_intake.setControl(m_velocityVoltage.withVelocity(15));
+}
+
+
 public boolean coralCheck()
 {
   return canrange.getIsDetected().getValue();

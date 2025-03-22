@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.3062784090909094,
-        "y": 7.091264204545454
+        "x": 1.0627499999999999,
+        "y": 7.115749999999999
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.1937499999999996,
-        "y": 6.303508522727273
+        "x": 1.9502215909090896,
+        "y": 6.327994318181818
       },
       "isLocked": false,
       "linkedName": "Barge Load"
@@ -45,10 +45,10 @@
     "rotation": -55.00797980144128
   },
   "reversed": false,
-  "folder": null,
+  "folder": "Barge Paths",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 130.31410016049733
+    "rotation": 125.78897345918342
   },
   "useDefaultConstraints": true
 }

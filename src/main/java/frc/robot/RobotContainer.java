@@ -14,6 +14,8 @@ import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.ctre.phoenix6.swerve.SwerveRequest;
+
+import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -27,7 +29,9 @@ import frc.robot.Commands.ElevatorHomeCommand;
 import frc.robot.Commands.ElevatorL4Command;
 import frc.robot.Commands.IntakeCommand;
 import frc.robot.Commands.OuttakeCommand;
+import frc.robot.Commands.SWL1Command;
 import frc.robot.Commands.SWL4Command;
+import frc.robot.Commands.SWL4CommandLOWER;
 import frc.robot.Commands.SWLoadCommand;
 import frc.robot.generated.TunerConstants;
 import frc.robot.generated.Constants.CoralIntakeConstants;
@@ -71,7 +75,11 @@ public class RobotContainer {
     private ElevatorL4Command elevatorL4Command = new ElevatorL4Command(elevator, led);
     private ElevatorHomeCommand elevatorHomeCommand = new ElevatorHomeCommand(elevator, led);
     private SWL4Command swL4Command = new SWL4Command(pivot, shoulderSubsystem,led);
+    private SWL4CommandLOWER SWL4CommandLOWER = new SWL4CommandLOWER(pivot, shoulderSubsystem,led);
+
     private SWLoadCommand swLoadCommand = new SWLoadCommand(pivot, shoulderSubsystem, led);
+    private SWL1Command swL1Command = new SWL1Command(pivot, shoulderSubsystem, led);
+
 
     /* Setting up bindings for necessary control of the swerve drive platform */
     private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
@@ -91,6 +99,10 @@ public class RobotContainer {
 
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
 
+    private final SlewRateLimiter filter = new SlewRateLimiter(3);
+    private final SlewRateLimiter filter2 = new SlewRateLimiter(3);
+
+
     public RobotContainer() {
         //Named Commands
         //Drive
@@ -102,7 +114,10 @@ public class RobotContainer {
 
         //SW
         NamedCommands.registerCommand("swL4", swL4Command);
+        NamedCommands.registerCommand("swL4LOWER", SWL4CommandLOWER);
+        NamedCommands.registerCommand("SWL1Command", swL1Command);
         NamedCommands.registerCommand("swLoad", swLoadCommand);
+
 
         //Intake
         NamedCommands.registerCommand("intake", intakeCommand);
@@ -174,8 +189,11 @@ public class RobotContainer {
         
 
         //L4 + L3
-        //joystick.y().onTrue(new ParallelCommandGroup(pivot.withPosition(-33.9), shoulderSubsystem.setL4Position()));
-        joystick.y().onTrue(new ParallelCommandGroup(pivot.withPosition(-38.3), shoulderSubsystem.withPosition(92.7)));
+        joystick.y().onTrue(new ParallelCommandGroup(pivot.withPosition(-34.9), shoulderSubsystem.withPosition(88.3))); //89
+
+        //L3
+        //joystick.a().onTrue(new ParallelCommandGroup(pivot.withPosition(-33.9), shoulderSubsystem.withPosition(88.3))); //89
+        //joystick.y().onTrue(new ParallelCommandGroup(pivot.withPosition(-37.3), shoulderSubsystem.withPosition(92.7))); //-38.3
 
         //L2
         joystick.a().onTrue(new ParallelCommandGroup(pivot.withPosition(15.4), shoulderSubsystem.withPosition(11.91)));
@@ -197,14 +215,14 @@ public class RobotContainer {
 
 //////////////
         //Climber Code
-        climber.setDefaultCommand(climber.stopCommand());
+        climber.setDefaultCommand(climber.newStop());
         opJoystick2.button(1).whileTrue(climber.slowDown());
         opJoystick2.button(2).whileTrue(climber.slowUp());
 
-        opJoystick2.pov(0).onTrue(climber.withPosition(270)); // For the match
-        opJoystick2.pov(90).onTrue(climber.withPosition(0)); // For the match
-        opJoystick2.pov(180).onTrue(climber.withPosition(-100)); //Climb -100 from center
-        //opJoystick2.pov(0).onTrue(climber.withPosition(-270)); // For the pid  
+        opJoystick2.pov(0).onTrue(climber.withPosition(233.2)); // For the match 270
+        opJoystick2.pov(90).onTrue(climber.withPosition(0)); // For the match 0
+        opJoystick2.pov(180).onTrue(climber.withPosition(-180.8)); //Climb -100 from center -100
+        //opJoystick2.pov(0).onTrue(climber.withPosition(-233.2)); // For the pid //-233.2 
 
 ///////////////
 
@@ -223,11 +241,22 @@ public class RobotContainer {
         drivetrain.setDefaultCommand(
             // Drivetrain will execute this command periodically
             drivetrain.applyRequest(() ->
-                drive.withVelocityX(-joystick.getLeftY() * MaxSpeed * .6) // Drive forward with negative Y (forward)
-                    .withVelocityY(-joystick.getLeftX() * MaxSpeed * .6) // Drive left with negative X (left)
+                drive.withVelocityX(filter.calculate(-joystick.getLeftY()) * MaxSpeed)// Drive forward with negative Y (forward)
+                    .withVelocityY(filter2.calculate(-joystick.getLeftX()) * MaxSpeed) // Drive left with negative X (left)
                     .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
             )
-        );
+        ); 
+
+        //old one
+        // drivetrain.setDefaultCommand(
+        //     // Drivetrain will execute this command periodically
+        //     drivetrain.applyRequest(() ->
+        //         drive.withVelocityX(-joystick.getLeftY() * MaxSpeed * .70) // Drive forward with negative Y (forward)
+        //             .withVelocityY(-joystick.getLeftX() * MaxSpeed * .70) // Drive left with negative X (left)
+        //             .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
+        //     )
+        // ); 
+
 
         // drivetrain.setDefaultCommand(
         //     // Drivetrain will execute this command periodically
@@ -246,33 +275,57 @@ public class RobotContainer {
         // ));
 
 
-        joystick.back().whileTrue(drivetrain.applyRequest(() -> brake));
-        joystick.pov(0).whileTrue(new ParallelCommandGroup (drivetrain.applyRequest(() ->
-            forwardStraight.withVelocityX(0.25).withVelocityY(0))
+        // joystick.back().whileTrue(drivetrain.applyRequest(() -> brake));
+         joystick.pov(0).whileTrue(new ParallelCommandGroup (drivetrain.applyRequest(() ->
+        forwardStraight.withVelocityX(0.25).withVelocityY(0))
+         , led.setHBFAST()));
+
+        joystick.pov(180).whileTrue(new ParallelCommandGroup (drivetrain.applyRequest(() ->
+            forwardStraight.withVelocityX(-0.25).withVelocityY(0))
         , led.setHBFAST()));
 
-        joystick.pov(180).whileTrue(drivetrain.applyRequest(() ->
-            forwardStraight.withVelocityX(-0.25).withVelocityY(0))
-        );
+        // joystick.pov(180).whileTrue(drivetrain.applyRequest(() ->
+        //     forwardStraight.withVelocityX(-0.25).withVelocityY(0))
+        // );
 
-        joystick.pov(90).whileTrue(drivetrain.applyRequest(() ->
+        joystick.pov(90).whileTrue(new ParallelCommandGroup (drivetrain.applyRequest(() ->
             forwardStraight.withVelocityX(0).withVelocityY(-0.25))
-        );
-        joystick.pov(270).whileTrue(drivetrain.applyRequest(() ->
+        , led.setHBFAST()));
+
+        // joystick.pov(90).whileTrue(drivetrain.applyRequest(() ->
+        //     forwardStraight.withVelocityX(0).withVelocityY(-0.25))
+        // );
+
+        joystick.pov(270).whileTrue(new ParallelCommandGroup (drivetrain.applyRequest(() ->
             forwardStraight.withVelocityX(0).withVelocityY(0.25))
-        );
+        , led.setHBFAST()));
+
+        // joystick.pov(270).whileTrue(drivetrain.applyRequest(() ->
+        //     forwardStraight.withVelocityX(0).withVelocityY(0.25))
+        // );
 
         joystick.leftBumper().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldCentric()));
 
         // drivetrain.registerTelemetry(logger::telemeterize);
 
-        joystick.x().whileTrue(drivetrain.resetPIDsReef().andThen(drivetrain.applyRequest(() ->
+        joystick.x().whileTrue(drivetrain.resetPIDsReef().andThen(drivetrain.applyRequest(() -> //whileTrue
         drive.withVelocityX(drivetrain.run_xControllerLeft())
             .withVelocityY(drivetrain.run_yControllerLeft())
             .withRotationalRate(drivetrain.run_omegaControllerLeft())
             )));
 
-        joystick.b().whileTrue(drivetrain.resetPIDsReef().andThen(drivetrain.applyRequest(() ->
+        //  joystick.x().whileTrue(drivetrain.resetPIDsReef().andThen(
+        //      drivetrain.applyRequest(() -> drive.withRotationalRate(drivetrain.run_omegaControllerLeft()))).andThen(
+        //      drivetrain.applyRequest(() -> drive.withVelocityX(drivetrain.run_xControllerLeft()).withVelocityY(drivetrain.run_yControllerLeft()))).andThen(
+        //      drivetrain.applyRequest(() -> drive.withRotationalRate(drivetrain.run_omegaControllerLeft()))));
+
+        //  joystick.b().whileTrue(drivetrain.resetPIDsReef().andThen(
+        //      drivetrain.applyRequest(() -> drive.withRotationalRate(drivetrain.run_omegaControllerRight()))).andThen(
+        //      drivetrain.applyRequest(() -> drive.withVelocityX(drivetrain.run_xControllerRight()).withVelocityY(drivetrain.run_yControllerRight()))).andThen(
+        //      drivetrain.applyRequest(() -> drive.withRotationalRate(drivetrain.run_omegaControllerRight()))));
+
+
+        joystick.b().whileTrue(drivetrain.resetPIDsReef().andThen(drivetrain.applyRequest(() -> //whileTrue
         drive.withVelocityX(drivetrain.run_xControllerRight())
             .withVelocityY(drivetrain.run_yControllerRight())
             .withRotationalRate(drivetrain.run_omegaControllerRight())
@@ -287,7 +340,7 @@ public class RobotContainer {
         //     point.withModuleDirection(new Rotation2d(-joystick.getLeftY(), -joystick.getLeftX()))
         // ));
 
-        // // Run SysId routines when holding back/start and X/Y.
+        // // Run SysId routines when holding back/start and X/Y.s
         // // Note that each routine should be run exactly once in a single log.
         // joystick.back().and(joystick.y()).whileTrue(drivetrain.sysIdDynamic(Direction.kForward));
         // joystick.back().and(joystick.x()).whileTrue(drivetrain.sysIdDynamic(Direction.kReverse));
