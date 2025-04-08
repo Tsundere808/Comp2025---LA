@@ -189,7 +189,7 @@ public class RobotContainer {
         
 
         //L4 + L3
-        joystick.y().onTrue(new ParallelCommandGroup(pivot.withPosition(-34.9), shoulderSubsystem.withPosition(88.3))); //89
+        joystick.y().onTrue(new ParallelCommandGroup(pivot.withPosition(-34.4), shoulderSubsystem.withPosition(88.3))); //89
 
         //L3
         //joystick.a().onTrue(new ParallelCommandGroup(pivot.withPosition(-33.9), shoulderSubsystem.withPosition(88.3))); //89
@@ -224,7 +224,7 @@ public class RobotContainer {
         opJoystick2.pov(180).onTrue(climber.withPosition(-180.8)); //Climb -100 from center -100
         //opJoystick2.pov(0).onTrue(climber.withPosition(-233.2)); // For the pid //-233.2 
 
-///////////////
+/////////////
 
         //Coral Controls
         coralintake.setDefaultCommand(coralintake.stop());
@@ -241,8 +241,8 @@ public class RobotContainer {
         drivetrain.setDefaultCommand(
             // Drivetrain will execute this command periodically
             drivetrain.applyRequest(() ->
-                drive.withVelocityX(filter.calculate(-joystick.getLeftY()) * MaxSpeed)// Drive forward with negative Y (forward)
-                    .withVelocityY(filter2.calculate(-joystick.getLeftX()) * MaxSpeed) // Drive left with negative X (left)
+                drive.withVelocityX(filter.calculate(-joystick.getLeftY()) * MaxSpeed * 0.9)// Drive forward with negative Y (forward)
+                    .withVelocityY(filter2.calculate(-joystick.getLeftX()) * MaxSpeed * 0.9) // Drive left with negative X (left)
                     .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
             )
         ); 

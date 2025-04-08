@@ -11,12 +11,6 @@
           }
         },
         {
-          "type": "named",
-          "data": {
-            "name": "swL4"
-          }
-        },
-        {
           "type": "path",
           "data": {
             "pathName": "Barge Start"
@@ -25,7 +19,7 @@
         {
           "type": "named",
           "data": {
-            "name": "elevatorL4"
+            "name": "SWL1Command"
           }
         },
         {
@@ -44,12 +38,6 @@
           "type": "wait",
           "data": {
             "waitTime": 0.1
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "elevatorHome"
           }
         },
         {
@@ -91,6 +79,12 @@
           }
         },
         {
+          "type": "named",
+          "data": {
+            "name": "intake"
+          }
+        },
+        {
           "type": "parallel",
           "data": {
             "commands": [
@@ -107,7 +101,7 @@
                     {
                       "type": "named",
                       "data": {
-                        "name": "swL4"
+                        "name": "swL4LOWER"
                       }
                     }
                   ]
@@ -191,6 +185,12 @@
           }
         },
         {
+          "type": "named",
+          "data": {
+            "name": "intake"
+          }
+        },
+        {
           "type": "parallel",
           "data": {
             "commands": [
@@ -207,7 +207,7 @@
                     {
                       "type": "named",
                       "data": {
-                        "name": "swL4"
+                        "name": "swL4LOWER"
                       }
                     }
                   ]

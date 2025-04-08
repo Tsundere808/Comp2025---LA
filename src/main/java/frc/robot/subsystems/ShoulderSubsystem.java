@@ -55,6 +55,8 @@ public class ShoulderSubsystem extends SubsystemBase {
   double L4Position = 88.3; // 180 degrees 88.3
   double L3Position = 0;
   double L2Position = 11.91;
+  double L1Position = 11.5;
+
   double loadPosition = 11.91;
 
 
@@ -129,7 +131,7 @@ public boolean CheckPositionL2()
 
 public boolean CheckPositionL1()
 {
- return MathUtil.isNear(L2Position,shoulder.getPosition().getValueAsDouble(), 1);
+ return MathUtil.isNear(L2Position,shoulder.getPosition().getValueAsDouble(), .5);
 }
 
 public void setPosition(double setPoint)

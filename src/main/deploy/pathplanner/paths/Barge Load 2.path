@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.6396306818181814,
-        "y": 5.06703125
+        "x": 3.692213114754098,
+        "y": 5.013985655737705
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.1310795454545453,
-        "y": 5.465894886363635
+        "x": 3.183661978390462,
+        "y": 5.41284929210134
       },
       "isLocked": false,
       "linkedName": "Barge Score 1"
@@ -48,7 +48,7 @@
   "folder": "Barge Paths",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -55.00797980144128
+    "rotation": -60.008
   },
   "useDefaultConstraints": true
 }

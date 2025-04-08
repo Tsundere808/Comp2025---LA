@@ -53,7 +53,7 @@ public class PivotSubsystem extends SubsystemBase {
   double L4Position = -33.9;
   double L3Position = 0;
   double L2Position = 0;
-  double L1Position = 12.2;
+  double L1Position = 12.0;
   double loadPosition = 26.18;
 
 
@@ -119,7 +119,7 @@ public boolean CheckPositionL4()
 
 public boolean CheckPositionL4LOWER()
 {
- return MathUtil.isNear(-34.9,pivot.getPosition().getValueAsDouble(), .5);
+ return MathUtil.isNear(-34.4,pivot.getPosition().getValueAsDouble(), .3);
 }
 
 public boolean CheckPositionL3()
@@ -134,7 +134,7 @@ public boolean CheckPositionL2()
 
 public boolean CheckPositionL1()
 {
- return MathUtil.isNear(L1Position,pivot.getPosition().getValueAsDouble(), 1);
+ return MathUtil.isNear(L1Position,pivot.getPosition().getValueAsDouble(), .5);
 }
 
 public void setPosition(double setPoint)

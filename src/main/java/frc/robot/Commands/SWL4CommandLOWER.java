@@ -28,7 +28,7 @@ public class SWL4CommandLOWER extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    pivot.setPosition(-34.9);
+    pivot.setPosition(-34.4);
     shoulder.setPosition(88.3);
     led.PINK();
   }

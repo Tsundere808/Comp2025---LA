@@ -1,0 +1,85 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "intake"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "swL4LOWER"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Middle Start"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "elevatorL4"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 1.0
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "outtake"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "elevatorHome"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "MID Backup"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "swLoad"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "MID Push"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "MID Push End"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}
